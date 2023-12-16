@@ -42,6 +42,10 @@ ALTER TABLE stockage_produit
 ADD CONSTRAINT CHK_stockage_produit_id_stocks
 CHECK (id_stocks LIKE 'SP[0-9][0-9][0-9]');
 
+/* si vous avez implementé les 9 premiers modifications  d'un coup et c'etait OK
+   pour  pouvoir utiliser le script des 2 dernieres modifications et 2 derniers ajouts 
+   JE VOUS CONSEILLE VIVEMENT DE LES IMPLEMENTER UN PAR UN ET LA CA VA MARCHER! */
+    
 -- Modification de la table "commande"
 ALTER TABLE commande
 ADD id_commande VARCHAR(10) PRIMARY KEY;
