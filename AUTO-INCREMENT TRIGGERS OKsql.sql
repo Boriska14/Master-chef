@@ -1,3 +1,5 @@
+/* NE PLUS UTILISER*/
+
 1
 
 USE Master_ChefDB;
@@ -21,7 +23,7 @@ BEGIN
     UPDATE table_client
     SET id_table = @id_table
     FROM inserted
-    WHERE table_client.id_table IS NULL -- Uniquement pour les insertions manuelles
+    WHERE table_client.id_table IS NOT NULL -- Uniquement pour les insertions manuelles
 
 END;
 **********************
@@ -48,7 +50,7 @@ BEGIN
     UPDATE client
     SET id_client = @id_client
     FROM inserted
-    WHERE client.id_client IS NULL -- Uniquement pour les insertions manuelles
+    WHERE client.id_client IS NOT NULL -- Uniquement pour les insertions manuelles
 
 END;
 **********************
@@ -75,7 +77,7 @@ BEGIN
     UPDATE reservation
     SET id_reservation = @id_reservation
     FROM inserted
-    WHERE reservation.id_reservation IS NULL -- Uniquement pour les insertions manuelles
+    WHERE reservation.id_reservation IS NOT NULL -- Uniquement pour les insertions manuelles
 
 END;
 ************************
@@ -102,7 +104,7 @@ BEGIN
     UPDATE identity_reserve
     SET id_reserve = @id_reserve
     FROM inserted
-    WHERE identity_reserve.id_reserve IS NULL -- Uniquement pour les insertions manuelles
+    WHERE identity_reserve.id_reserve IS NOT NULL -- Uniquement pour les insertions manuelles
 
 END;
 ************************
@@ -129,7 +131,7 @@ BEGIN
     UPDATE materiel_cuisine
     SET id_materiel = @id_materiel
     FROM inserted
-    WHERE materiel_cuisine.id_materiel IS NULL -- Uniquement pour les insertions manuelles
+    WHERE materiel_cuisine.id_materiel IS NOT NULL -- Uniquement pour les insertions manuelles
 
 END;
 **********************
@@ -156,7 +158,7 @@ BEGIN
     UPDATE aliment
     SET id_aliment = @id_aliment
     FROM inserted
-    WHERE aliment.id_aliment IS NULL -- Uniquement pour les insertions manuelles
+    WHERE aliment.id_aliment IS NOT NULL -- Uniquement pour les insertions manuelles
 
 END;
 *********************
@@ -183,7 +185,7 @@ BEGIN
     UPDATE repas
     SET id_repas = @id_repas
     FROM inserted
-    WHERE repas.id_repas IS NULL -- Uniquement pour les insertions manuelles
+    WHERE repas.id_repas IS NOT NULL -- Uniquement pour les insertions manuelles
 
 END;
 ******************
@@ -210,7 +212,7 @@ BEGIN
     UPDATE stockage_produit
     SET id_stocks = @id_stocks
     FROM inserted
-    WHERE stockage_produit.id_stocks IS NULL -- Uniquement pour les insertions manuelles
+    WHERE stockage_produit.id_stocks IS NOT NULL -- Uniquement pour les insertions manuelles
 
 END;
 *****************
@@ -237,7 +239,7 @@ BEGIN
     UPDATE commande
     SET id_commande = @id_commande
     FROM inserted
-    WHERE commande.id_commande IS NULL -- Uniquement pour les insertions manuelles
+    WHERE commande.id_commande IS NOT NULL -- Uniquement pour les insertions manuelles
 
 END;
 ********************
@@ -264,6 +266,6 @@ BEGIN
     UPDATE plonge
     SET id_plonge = @id_plonge
     FROM inserted
-    WHERE plonge.id_plonge IS NULL -- Uniquement pour les insertions manuelles
+    WHERE plonge.id_plonge IS NOT NULL -- Uniquement pour les insertions manuelles
 
 END;

@@ -1,3 +1,5 @@
+/* NE PLUS UTILISER*/
+
 -- Modification de la table "table_client"
 ALTER TABLE table_client
 ADD CONSTRAINT CHK_table_client_id_table
