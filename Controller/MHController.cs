@@ -4,11 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp1.Model;
+using SalleCode.Model;
 
 namespace ConsoleApp1.Controller
 {
     internal class MHController
     {
+        private Salle salle;
+
+        public MHController(Salle salle)
+        {
+            this.salle = salle;
+        }
+
         public void Send()
 
         {
@@ -23,35 +31,37 @@ namespace ConsoleApp1.Controller
                 SalleController.clientsMre.Reset();
 
                 SalleController.clientsMutex.WaitOne();
-                GroupeClients clients = SalleController.clients.Dequeue();
+                GroupeClients clients = SalleController.clients.Peek();
                 SalleController.clientsMutex.ReleaseMutex();
                 int nbreClients = clients.nbreClients;
-                bool tableTrouvee = false;
+                Table tableTrouvee = null;
 
-                foreach ( Table table  in SalleController.tables) 
+                foreach ( Table table  in salle.tables) 
                 {
                     if (table.nbre_place >= nbreClients && !SalleController.tablesOccupe.Contains(table)) 
                     {
-                        tableTrouvee = true;                
-                        SalleController.tablesOccupe.Enqueue(table);
+                        tableTrouvee = table;                
                         break;
                     }
 
                 }
                 
 
-                if (tableTrouvee)
+                if (tableTrouvee != null)
                 {
-                    Thread.Sleep(2000);
+                    SalleController.tablesOccupe.Enqueue(tableTrouvee);
+                    SalleController.clientsMoveToTableMre.Set();
+                    salle.mh.moveTo(tableTrouvee.x, tableTrouvee.y);
                     Console.WriteLine("Maitre d'hotel:le client est bien installé");
                     SalleController.cmdgroupMre.Set();
+                    salle.mh.moveTo(50, 0);
                 }
-
                 else
                 {
                     Console.WriteLine("Maitre d'hotel : il n'ya aucune table disponible");
                 }
-               
+                
+                SalleController.clients.Dequeue();
 
             }
         }

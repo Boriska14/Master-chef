@@ -15,6 +15,7 @@ namespace ConsoleApp1.Controller
          
        public static Queue<GroupeClients> clients = new Queue<GroupeClients>();
         public static ManualResetEvent clientsMre = new ManualResetEvent(false);
+        public static ManualResetEvent clientsMoveToTableMre = new ManualResetEvent(false);
         public static ManualResetEvent commandeMre = new ManualResetEvent(false);
         public static ManualResetEvent cmdgroupMre = new ManualResetEvent(false); 
        
@@ -26,23 +27,18 @@ namespace ConsoleApp1.Controller
         public static Queue<Table> tablesOccupe = new Queue<Table>();
 
 
-        ClientController clientController = new ClientController();
-        MHController mhController = new MHController();
-        CRController crController = new CRController(); 
+        ClientController clientController;
+        MHController mhController;
+        CRController crController;
         public static List<String> Menu = new List<String> { "Feuilleté au crabe", "Oeufs cocotte", "brouillinade", "vboles de picoulats", "Blanquette de veau" };
         public SalleController() 
         {
             this.salle = new Salle();
             this.salleView = new SalleView(salle);
-
-        Table tablecouple2 = new Table(2);
-                tables.Add(tablecouple2);
-            Table tablecouple1 = new Table(2);
-                    tables.Add(tablecouple1);
-            Table table = new Table(4);
-                    tables.Add(table);
-            Table tableronde = new Table(6);
-            tables.Add(tableronde);
+            this.salle.addObserver(salleView);
+            this.clientController = new ClientController(this.salle);
+            this.mhController = new MHController(this.salle);
+            this.crController = new CRController();
         }
 
         public void run()

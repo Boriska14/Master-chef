@@ -4,11 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp1.Model;
+using ConsoleApp1.View;
+using SalleCode.Model;
 
 namespace ConsoleApp1.Controller
 {
-    internal class ClientController
+    public class ClientController
     {
+        private Salle salle;
+        public ClientController(Salle salle) {
+            this.salle = salle;
+        }
      
         public void addClient()
         {
@@ -18,9 +24,11 @@ namespace ConsoleApp1.Controller
                 int tmp  = rnd.Next(1000,10000);
                 int nbreClients = rnd.Next(1, 7);
                 Thread.Sleep(tmp);
-                GroupeClients client = new GroupeClients( nbreClients);
+                GroupeClients client = GroupeClientsFactory.createGroupeClients(nbreClients);
                 SalleController.clientsMutex.WaitOne();
                 SalleController.clients.Enqueue(client);
+                salle.clients.Add(client);
+                Salle.notifyObserver(client.x, client.y, client.x, client.y, client.sprite.Width, client.sprite.Height);
                 SalleController.clientsMutex.ReleaseMutex();
                 Thread clientthread = new Thread(() => { order(nbreClients); });
                 clientthread.Start();
@@ -59,11 +67,24 @@ namespace ConsoleApp1.Controller
                
         }
 
+        public void moveToTable()
+        {
+            while(true) 
+            {
+                SalleController.clientsMoveToTableMre.WaitOne();
+                SalleController.clientsMoveToTableMre.Reset();
+
+                Table table = SalleController.tablesOccupe.Peek();
+               //SalleController.clients.moveTO(table.x, table.y);
+            }
+        }
 
         public void run()
         {
             Thread threadClient = new Thread(addClient);
             threadClient.Start();
+            Thread threadMoveClient = new Thread(moveToTable);
+            threadMoveClient.Start();
         }
 
     }
