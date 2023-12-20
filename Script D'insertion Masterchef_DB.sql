@@ -102,6 +102,46 @@ INSERT INTO aliment (nom_aliment) VALUES
 -- (9, 9, '', '', 2),
 -- (10, 10, '', '', 1);
 
+-- -- Insertion 1
+-- INSERT INTO repas (id_aliment, id_materiel, nom, typ_repas, nbr_materiel)
+-- VALUES (1, 1, 'Salade verte', 'entrée-plat', 2);
+
+-- -- Insertion 2
+-- INSERT INTO repas (id_aliment, id_materiel, nom, typ_repas, nbr_materiel)
+-- VALUES (2, 3, 'Poulet rôti', 'entrée-plat', 1);
+
+-- -- Insertion 3
+-- INSERT INTO repas (id_aliment, id_materiel, nom, typ_repas, nbr_materiel)
+-- VALUES (3, 2, 'Frites', 'entrée-plat', 1);
+
+-- -- Insertion 4
+-- INSERT INTO repas (id_aliment, id_materiel, nom, typ_repas, nbr_materiel)
+-- VALUES (4, 4, 'Tarte aux pommes', 'dessert', 1);
+
+-- -- Insertion 5
+-- INSERT INTO repas (id_aliment, id_materiel, nom, typ_repas, nbr_materiel)
+-- VALUES (5, 5, 'Salade de fruits', 'dessert', 1);
+
+-- -- Insertion 6
+-- INSERT INTO repas (id_aliment, id_materiel, nom, typ_repas, nbr_materiel)
+-- VALUES (6, 1, 'Tomate mozzarella', 'entrée-plat', 2);
+
+-- -- Insertion 7
+-- INSERT INTO repas (id_aliment, id_materiel, nom, typ_repas, nbr_materiel)
+-- VALUES (7, 3, 'Steak frites', 'entrée-plat', 1);
+
+-- -- Insertion 8
+-- INSERT INTO repas (id_aliment, id_materiel, nom, typ_repas, nbr_materiel)
+-- VALUES (8, 2, 'Crème brûlée', 'dessert', 1);
+
+-- -- Insertion 9
+-- INSERT INTO repas (id_aliment, id_materiel, nom, typ_repas, nbr_materiel)
+-- VALUES (9, 4, 'Mousse au chocolat', 'dessert', 1);
+
+-- -- Insertion 10
+-- INSERT INTO repas (id_aliment, id_materiel, nom, typ_repas, nbr_materiel)
+-- VALUES (10, 5, 'Salade César', 'entrée-plat', 2);
+
 -- -- Insertions pour la table "commande"
 -- INSERT INTO commande (id_repas, id_table, id_client) VALUES
 -- ( , , ),
