@@ -80,7 +80,7 @@ CREATE TABLE repas (
                        id_aliment INT NOT NULL,
                        id_materiel INT NOT NULL,
                        nom VARCHAR(50) NOT NULL,
-                       typ_repas VARCHAR(10) NOT NULL CHECK (typ_repas IN('entrée-plat', 'dessert')),
+                       typ_repas VARCHAR(50) NOT NULL CHECK (typ_repas IN('entrée-plat', 'dessert')),
                        nbr_materiel INT NOT NULL CHECK (nbr_materiel <= 3),
                        FOREIGN KEY (id_aliment) REFERENCES aliment(id_aliment),
                        FOREIGN KEY (id_materiel) REFERENCES  materiel_cuisine(id_materiel)
