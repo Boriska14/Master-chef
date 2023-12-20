@@ -4,29 +4,44 @@ GO
 -- Insertions pour la table "table_client"
 INSERT INTO table_client (nbr_chaise, nbr_verre, nbr_assiette, nbr_pain, nbr_couverts, nbr_bouteille_eau, nbr_bouteille_vin, isOccupied)
 VALUES
-(4, 6, 4, 2, 4, 2, 1, 'oui'),
-(4, 4, 4, 4, 4, 4, 1, 'oui'),
-(2, 2, 2, 2, 2, 2, 1, 'oui'),
-(6, 6, 6, 6, 6, 6, 2, 'oui'),
-(8, 8, 8, 8, 8, 8, 3, 'oui'),
-(2, 2, 2, 2, 2, 2, 1, 'oui'),
-(4, 4, 4, 4, 4, 4, 1, 'oui'),
-(6, 6, 6, 6, 6, 6, 2, 'non'),
-(6, 6, 6, 6, 6, 6, 2, 'non'),
-(4, 4, 4, 4, 4, 4, 1, 'non');
+(4, 6, 4, 2, 4, 2, 1, 'non'), --1
+(4, 4, 4, 4, 4, 4, 1, 'non'), --2
+(2, 2, 2, 2, 2, 2, 1, 'non'), --3
+(6, 6, 6, 6, 6, 6, 2, 'non'), --4
+(8, 8, 8, 8, 8, 8, 3, 'non'), --5
+(4, 4, 4, 4, 4, 4, 1, 'non'), --6
+(2, 2, 2, 2, 2, 2, 1, 'oui'), --7
+(6, 6, 6, 6, 6, 6, 2, 'oui'), --8
+(2, 6, 6, 6, 6, 6, 2, 'non'), --9
+(4, 4, 4, 4, 4, 4, 1, 'oui'); --10
 
--- Insertions pour la table "client"
-INSERT INTO client (id_table, date, reservation) VALUES
-(1, '2023-01-01', 'oui'),
-(1, '2023-01-02', 'oui'),
-(2, '2023-01-03', 'oui'),
-(3, '2023-01-04', 'oui'),
-(4, '2023-01-05', 'oui'),
-(2, '2023-01-06', 'oui'),
-(3, '2023-01-07', 'oui'),
-(4, '2023-01-08', 'non'),
-(5, '2023-01-09', 'non'),
-(5, '2023-01-10', 'non');
+-- -- Insertions pour la table "client"
+-- INSERT INTO client (id_table, date, reservation) VALUES
+-- (1, '2023-01-01', 'oui'),
+-- (2, '2023-01-02', 'oui'),
+-- (3, '2023-01-03', 'oui'),
+-- (4, '2023-01-04', 'oui'),
+-- (5, '2023-01-05', 'oui'),
+-- (6, '2023-01-06', 'oui'),
+-- (6, '2023-01-07', 'oui'),
+-- (7, '2023-01-08', 'non'),
+-- (7, '2023-01-09', 'non'),
+-- (8, '2023-01-10', 'non');
+
+-- -- insertion avec appel a la procedure stock√©e
+-- EXEC dbo.InsertClient @id_table = 1, @date = '2023-12-19', @reservation = 'oui';
+-- EXEC dbo.InsertClient @id_table = 2, @date = '2023-12-19', @reservation = 'oui';
+-- EXEC dbo.InsertClient @id_table = 3, @date = '2023-12-19', @reservation = 'oui';
+-- EXEC dbo.InsertClient @id_table = 4, @date = '2023-12-19', @reservation = 'oui';
+-- EXEC dbo.InsertClient @id_table = 5, @date = '2023-12-19', @reservation = 'oui';
+-- EXEC dbo.InsertClient @id_table = 6, @date = '2023-12-19', @reservation = 'oui';
+-- EXEC dbo.InsertClient @id_table = 6, @date = '2023-12-19', @reservation = 'oui';
+-- EXEC dbo.InsertClient @id_table = 7, @date = '2023-12-19', @reservation = 'oui';
+-- EXEC dbo.InsertClient @id_table = 7, @date = '2023-12-19', @reservation = 'oui';
+-- EXEC dbo.InsertClient @id_table = 8, @date = '2023-12-19', @reservation = 'non';
+-- EXEC dbo.InsertClient @id_table = 9, @date = '2023-12-19', @reservation = 'non';
+-- EXEC dbo.InsertClient @id_table = 9, @date = '2023-12-19', @reservation = 'non';
+-- EXEC dbo.InsertClient @id_table = 10, @date = '2023-12-19', @reservation = 'non';
 
 -- -- Insertions pour la table "reservation"
 -- INSERT INTO reservation (id_client, id_table) VALUES
@@ -126,13 +141,13 @@ INSERT INTO aliment (nom_aliment) VALUES
 
 -- Insertions pour la table "stockage_produit"
 INSERT INTO stockage_produit (id_aliment, nom_aliment, typ_stockage, max_aliment) VALUES
-(1, 'Aliment1', 'DenrÈe Sec', 200),
+(1, 'Aliment1', 'Denr√©e Sec', 200),
 (2, 'Aliment2', 'Chambre froid', 200),
 (3, 'Aliment3', 'Congelateur', 200),
-(4, 'Aliment4', 'DenrÈe Sec', 200),
+(4, 'Aliment4', 'Denr√©e Sec', 200),
 (5, 'Aliment5', 'Chambre froid', 200),
-(6, 'Aliment6', 'DenrÈe Sec', 200),
+(6, 'Aliment6', 'Denr√©e Sec', 200),
 (7, 'Aliment7', 'Chambre froid', 200),
 (8, 'Aliment8', 'Congelateur', 200),
-(9, 'Aliment9', 'DenrÈe Sec', 200),
+(9, 'Aliment9', 'Denr√©e Sec', 200),
 (10, 'Aliment10', 'Chambre froid', 200);
