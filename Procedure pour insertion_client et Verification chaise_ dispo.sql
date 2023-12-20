@@ -64,3 +64,4 @@ BEGIN
 		END
 
 END;
+--EXEC dbo.InsertClient @id_table = 1, @date = '2023-12-19', @reservation = 'oui';
