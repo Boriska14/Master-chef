@@ -1,0 +1,22 @@
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'InsertClient')
+    DROP PROCEDURE IF EXISTS InsertClient;
+GO
+
+CREATE PROCEDURE InsertClient
+    @date DATE,
+    @reservation VARCHAR(10)
+AS
+BEGIN
+    DECLARE @id_table INT;
+    SET @id_table = CAST((RAND() * 10) + 1 AS INT); -- Generate a random number between 1 and 10
+    
+    INSERT INTO client (id_table, date, reservation)
+    VALUES (@id_table, @date, @reservation);
+END
+GO
+
+//////////
+DECLARE @date DATE = GETDATE();
+DECLARE @reservation VARCHAR(10) = 'NON';
+
+EXEC InsertClient @date, @reservation;
