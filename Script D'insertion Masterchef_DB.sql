@@ -15,18 +15,7 @@ VALUES
 (2, 6, 6, 6, 6, 6, 2, 'non'), --9
 (4, 4, 4, 4, 4, 4, 1, 'oui'); --10
 
--- -- Insertions pour la table "client"
--- INSERT INTO client (id_table, date, reservation) VALUES
--- (1, '2023-01-01', 'oui'),
--- (2, '2023-01-02', 'oui'),
--- (3, '2023-01-03', 'oui'),
--- (4, '2023-01-04', 'oui'),
--- (5, '2023-01-05', 'oui'),
--- (6, '2023-01-06', 'oui'),
--- (6, '2023-01-07', 'oui'),
--- (7, '2023-01-08', 'non'),
--- (7, '2023-01-09', 'non'),
--- (8, '2023-01-10', 'non');
+
 
 -- -- insertion avec appel a la procedure stockée
 -- EXEC dbo.InsertClient @id_table = 1, @date = '2023-12-19', @reservation = 'oui';
